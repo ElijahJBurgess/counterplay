@@ -108,6 +108,27 @@ export function simulateBalanceTransfer(input: BalanceTransferInput): BalanceTra
   const { creditScoreRange, debts, monthlyFreeCashFlow } = input
   const estimatedLimit = CREDIT_LIMITS[creditScoreRange]
 
+  const creditCardDebts = debts.filter((d) => d.type === 'credit_card')
+
+  if (creditCardDebts.length === 0) {
+    return {
+      move: 'Balance Transfer',
+      eligible: false,
+      borderline: false,
+      currentInterestCost: 0,
+      transferFee: 0,
+      netInterestSaved: 0,
+      monthsSaved: 0,
+      requiredMonthlyPayment: 0,
+      clearedInPromoWindow: false,
+      conservativeScenario: { clearedInWindow: false, requiredMonthlyToClean: 0 },
+      riskFlags: [],
+      recommendedCards: [],
+      impactScore: 0,
+      reason: 'No credit card debt found',
+    }
+  }
+
   // Not eligible: score too low
   if (creditScoreRange === '580-619') {
     return {
@@ -128,7 +149,7 @@ export function simulateBalanceTransfer(input: BalanceTransferInput): BalanceTra
     }
   }
 
-  const qualifyingDebts = debts.filter((d) => d.apr >= 18)
+  const qualifyingDebts = creditCardDebts.filter((d) => d.apr >= 18)
 
   // Not eligible: no high-APR debts
   if (qualifyingDebts.length === 0) {

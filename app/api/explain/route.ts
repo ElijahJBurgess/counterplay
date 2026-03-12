@@ -1,41 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 
-const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-})
+const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
-const RISK_FLAG_MESSAGES: Record<string, string> = {
-  'Utilization spike': 'This move will temporarily spike your credit utilization. Expect a 20–40 point score drop for 3–6 months.',
-  'Tight payoff window': "You'd need to commit most of your free cash flow to clear this in the promo window. High execution risk.",
-  'Balance too large for estimated limit': 'You may only be able to transfer a portion of this balance. Partial transfer still saves money.',
-  'Low margin of safety': "You're cutting it close. One missed payment could land you at the revert APR (typically 24–29%).",
-}
+const systemPrompt = `You are a financial strategist explaining a personalized debt optimization plan to someone who has never had a financial advisor.
+
+You have been given a ranked strategy object with real numbers from their actual financial situation. Your job is to turn this into a clear, punchy, sequenced game plan.
+
+Rules:
+- Lead with the total opportunity: how much they can save, how much time they can cut off their debt.
+- Present each move in rank order. For each: what it is in plain English, why it ranks where it does, what the key number is, what to do first.
+- If there are sequencing relationships, explain them as strategy: "Do X before Y because..." Make it feel like a coordinated attack plan.
+- Surface risk flags honestly but don't lead with them. Risk is context, not the headline.
+- Tone: the smart friend who grew up knowing how money actually works. Direct. Specific. No hedging. No jargon. No "you may want to consider."
+- Never say "you should." Frame everything as "here's what happens if you do X."
+- End with the single most important first action they can take today. One thing. Specific. Executable.
+- Total length: 250–350 words. Tight. Every sentence earns its place.
+- Do not use markdown formatting. No ##, no **, no ---, no *, no backticks. Plain sentences and line breaks only.`
 
 export async function POST(req: NextRequest) {
   try {
-    const result = await req.json()
+    const strategyResult = await req.json()
 
-    const expandedResult = {
-      ...result,
-      riskFlags: result.riskFlags.map((flag: string) =>
-        RISK_FLAG_MESSAGES[flag] || flag
-      ),
-    }
-
-    const systemPrompt = `You are a sharp financial strategist explaining a move to someone who has never had a financial advisor. Be direct. Be specific. Use the exact numbers. No jargon. No hedging language. No "you should consider."
-
-Frame it as: here's what's happening now, here's what changes if you make this move, here's what you need to do to execute it, here's the risk you need to know.
-
-The tone is: smart friend who grew up knowing how money works and is finally telling you everything.
-
-Keep it under 150 words.`
-
-    const userMessage = `Here is the balance transfer analysis result for this user:
-
-${JSON.stringify(expandedResult, null, 2)}
-
-Explain this result to them in plain English. Use the exact numbers.`
+    const userMessage = `Here is the ranked strategy for this user:\n\n${JSON.stringify(strategyResult, null, 2)}\n\nExplain this to them in plain English. Use the exact numbers. Follow the rules in your instructions.`
 
     const message = await client.messages.create({
       model: 'claude-opus-4-6',

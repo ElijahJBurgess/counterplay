@@ -75,7 +75,7 @@ function filterEligible(input: StrategyInput): any[] {
     input.module3,
     input.module4,
     input.module5,
-  ].filter((m) => m !== null && m.eligible === true)
+  ].filter((m) => m !== null && m.eligible === true && m.backgroundOnly !== true)
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -220,7 +220,14 @@ function getKeyMetric(module: any): string {
     case 'Aggressive Paydown Sequencing':
       return `Debt-free ${module.optimizedProjection?.monthsSaved ?? 0} months sooner`
     case 'Utilization Optimization':
-      return `$${Math.round(module.estimatedDollarSavingsOnLoan ?? 0)} saved on upcoming ${module.upcomingApplication ?? 'loan'}`
+      if (
+        module.estimatedDollarSavingsOnLoan > 0 &&
+        module.upcomingApplication &&
+        module.upcomingApplication.toLowerCase() !== 'none'
+      ) {
+        return `$${Math.round(module.estimatedDollarSavingsOnLoan)} saved on upcoming ${module.upcomingApplication}`
+      }
+      return `~${module.estimatedPointsRecoverable ?? 0} credit score points recoverable`
     case 'Refinance Timing Window':
       return `$${Math.round(module.netSavings ?? 0)} saved, $${Math.round(module.monthlyPaymentDelta ?? 0)}/month freed`
     default:
