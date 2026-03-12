@@ -1,10 +1,12 @@
-# Counterplay
+# Full Disclosure
 
 **A financial strategy tool that finds the moves the financial system never told you existed — and hands you the playbook to run them.**
 
-The financial system has cheat codes. Balance transfer arbitrage. Consolidation rate gaps. Credit utilization timing windows. Refinance opportunities hiding in plain sight. These moves are well known to people with financial literacy and systematically unknown to everyone else. Counterplay closes that gap.
+The financial system has cheat codes. Balance transfer arbitrage. Consolidation rate gaps. Credit utilization timing windows. Refinance opportunities hiding in plain sight. These moves are well known to people with financial literacy and systematically unknown to everyone else. Full Disclosure closes that gap.
 
 You enter your full debt picture. The engine analyzes it across five optimization modules, ranks every move by dollar impact, and Claude explains the strategy in plain English — the way a smart friend who grew up knowing how money works would explain it. Not advice. A ranked game plan with exact numbers and a specific first action.
+
+> **Note:** This project was built under the codename **Counterplay**. References to "Counterplay" in the documentation, file structure, and commit history refer to the same product.
 
 ---
 
@@ -174,4 +176,4 @@ This product is a simulation and education tool, not a registered financial advi
 
 ---
 
-Built by [Elijah Burgess](https://github.com/ElijahJBurgess) — Product Manager, March 2026.
+Built by [Elijah Burgess](https://github.com/ElijahJBurgess).
