@@ -149,7 +149,6 @@ Full documentation for each phase of the build:
 | [V1 PRD](docs/FullDisclosure_V1_PRD.docx) | Full product requirements — scope, modules, architecture, tradeoffs |
 | [Design Tokens](docs/FullDisclosure_Design_Tokens.docx) | Visual design system — colors, typography, spacing, component patterns |
 | [Product & Architecture Decisions](DECISIONS.md) | Key calls made during V1 — what was decided, what was rejected, and why |
-| [1-Pager](docs/FullDisclosure_1_Pager.docx) | Product overview — problem, modules, architecture, status |
 | [UX/UI Decisions](docs/FullDisclosure_UX_UI_Decisions.pdf) | Screen-by-screen design references — what was chosen, what was rejected, and why |
 ---
 
