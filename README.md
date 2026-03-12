@@ -139,7 +139,7 @@ Full documentation for each phase of the build:
 
 | Document | Description |
 |----------|-------------|
-| [1-Pager](docs/FullDisclosure_1_Pager.docx) | Product overview — problem, modules, architecture, status |
+| [1-Pager](docs/FullDisclosure_1_Pager.pdf) | Product overview — problem, modules, architecture, status |
 | [Phase 1 Build Log](docs/FullDisclosure_Phase1_Build_Log.docx) | Foundation — repo setup, auth, onboarding |
 | [Phase 1 PRD](docs/FullDisclosure_Phase1_PRD.docx) | Phase 1 product requirements |
 | [Phase 2 Build Log](docs/FullDisclosure_Phase2_Build_Log.docx) | Module 1 engine + full user flow |
