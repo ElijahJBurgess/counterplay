@@ -139,13 +139,18 @@ Full documentation for each phase of the build:
 
 | Document | Description |
 |----------|-------------|
-| [Phase 1 Build Log](docs/Counterplay_Phase1_Build_Log.docx) | Foundation — repo setup, auth, onboarding |
-| [Phase 2 Build Log](docs/Counterplay_Phase2_Build_Log.docx) | Module 1 engine + full user flow |
-| [Phase 2 PM Doc](docs/Counterplay_Phase2_PM_Doc.docx) | Product decisions, tradeoffs, architecture rationale |
-| [Phase 3 Build Log](docs/Counterplay_Phase3_Build_Log.docx) | Design system + all 5 screens + full engine integration |
-| [V1 PRD](docs/Counterplay_V1_PRD.docx) | Full product requirements — scope, modules, architecture, tradeoffs |
-| [Design Tokens](docs/Counterplay_Design_Tokens.docx) | Visual design system — colors, typography, spacing, component patterns |
-
+| [1-Pager](docs/FullDisclosure_1_Pager.docx) | Product overview — problem, modules, architecture, status |
+| [Phase 1 Build Log](docs/FullDisclosure_Phase1_Build_Log.docx) | Foundation — repo setup, auth, onboarding |
+| [Phase 1 PRD](docs/FullDisclosure_Phase1_PRD.docx) | Phase 1 product requirements |
+| [Phase 2 Build Log](docs/FullDisclosure_Phase2_Build_Log.docx) | Module 1 engine + full user flow |
+| [Phase 2 PM Doc](docs/FullDisclosure_Phase2_PM_Doc.docx) | Product decisions, tradeoffs, architecture rationale |
+| [Phase 3 Build Log](docs/FullDisclosure_Phase3_Build_Log.docx) | Design system + all 5 screens + full engine integration |
+| [Phase 3 PM Doc](docs/FullDisclosure_Phase3_PM_Doc.docx) | Phase 3 product decisions and tradeoffs |
+| [V1 PRD](docs/FullDisclosure_V1_PRD.docx) | Full product requirements — scope, modules, architecture, tradeoffs |
+| [Design Tokens](docs/FullDisclosure_Design_Tokens.docx) | Visual design system — colors, typography, spacing, component patterns |
+| [Product & Architecture Decisions](DECISIONS.md) | Key calls made during V1 — what was decided, what was rejected, and why |
+| [1-Pager](docs/FullDisclosure_1_Pager.docx) | Product overview — problem, modules, architecture, status |
+| [UX/UI Decisions](docs/FullDisclosure_UX_UI_Decisions.pdf) | Screen-by-screen design references — what was chosen, what was rejected, and why |
 ---
 
 ## Build Status
